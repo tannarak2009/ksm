@@ -14,7 +14,8 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>{{ $name }}'s Todos</h1>
+                <h1>Tawan's Todos</h1>
+                <a href="/todos/create" class="btn btn-outline-primary">Create New</a>
 
                 <div class="card">
                     <div class="card-body">
@@ -40,7 +41,14 @@
                                         <td>{{ $todos->firstItem() + $key }}</td>
                                         <td>{{ $todo->name }}</td>
                                         <td>{{ $todo->status }}</td>
-                                        <td><button class="btn btn-primary">Done</button></td>
+                                        <td>
+                                            <button class="btn btn-primary">Done</button>
+                                            <form action="todos/{{ $todo->id }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>
