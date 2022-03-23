@@ -19,6 +19,11 @@
 
                 <div class="card">
                     <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -52,7 +57,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3">No Data Yet</td>
+                                        <td colspan="4">No Data Yet</td>
                                     </tr>
                                 @endforelse
                             </tbody>
