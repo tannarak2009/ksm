@@ -47,12 +47,18 @@
                                         <td>{{ $todo->name }}</td>
                                         <td>{{ $todo->status }}</td>
                                         <td>
-                                            <button class="btn btn-primary">Done</button>
-                                            <form action="todos/{{ $todo->id }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
+                                            <div class="d-flex">
+                                                <a href="/todos/{{ $todo->id }}/edit"
+                                                    class="btn btn-warning mx-2">Edit</a>
+
+                                                <button class="btn btn-primary mx-2">Done</button>
+
+                                                <form action="todos/{{ $todo->id }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger mx-2">Delete</button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @empty
